@@ -1,0 +1,2 @@
+@ngm
+export class AppRoutingModule {}
