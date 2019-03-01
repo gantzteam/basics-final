@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';  // , Input
+import { Component, OnInit } from '@angular/core';  // , Input
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -14,8 +14,8 @@ export class RecipeDetailComponent implements OnInit {
   id: number;
 
   constructor(private recipeService: RecipeService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     // const id = this.route.snapshot.params['id'];
@@ -33,6 +33,11 @@ export class RecipeDetailComponent implements OnInit {
 
   onEditRecipe() {
     // this.router.navigate(['edit'], {relativeTo: this.route});
-    this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+    this.router.navigate(['../', this.id, 'edit'], { relativeTo: this.route });
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
   }
 }
